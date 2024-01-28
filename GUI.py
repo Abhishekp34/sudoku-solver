@@ -66,11 +66,9 @@ class Grid:
                 self.cubes[i][j].draw(self.win)
 
     def select(self, row, col):
-        # Reset all other
         for i in range(self.rows):
             for j in range(self.cols):
                 self.cubes[i][j].selected = False
-
         self.cubes[row][col].selected = True
         self.selected = (row, col)
 
@@ -80,10 +78,6 @@ class Grid:
             self.cubes[row][col].set_temp(0)
 
     def click(self, pos):
-        """
-        :param: pos
-        :return: (row, col)
-        """
         if pos[0] < self.width and pos[1] < self.height:
             gap = self.width / 9
             x = pos[0] // gap
@@ -204,7 +198,7 @@ def find_empty(bo):
     for i in range(len(bo)):
         for j in range(len(bo[0])):
             if bo[i][j] == 0:
-                return (i, j)  # row, col
+                return (i, j)
 
     return None
 
